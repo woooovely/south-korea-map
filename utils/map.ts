@@ -27,9 +27,14 @@ function useMap() {
       let currentPosition = [myLocation.latitude, myLocation.longitude];
 
       // Naver Map 생성
-      mapRef.current = new naver.maps.Map("map", {
+     const mapInstance =  mapRef.current = new naver.maps.Map("map", {
         center: new naver.maps.LatLng(currentPosition[0], currentPosition[1]),
         zoomControl: true,
+      });
+
+     const marker = mapRef.current = new naver.maps.Marker({
+        position: new naver.maps.LatLng(currentPosition[0], currentPosition[1]),
+        map: mapInstance
       });
     }
   }, [myLocation]);
